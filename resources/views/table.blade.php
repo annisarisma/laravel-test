@@ -12,21 +12,25 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Registered at</th>
+                                <th style="width: 30%; text-align: left">Name</th>
+                                <th style="width: 30%; text-align: left">Email</th>
+                                <th style="width: 30%; text-align: left">Registered at</th>
                             </tr>
                         </thead>
                         {{-- Task: add the loop here to show users, or the row "No content" --}}
                         <tbody>
-                            <tr>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->created_at }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">No content.</td>
-                            </tr>
+                            @if ( count($users) == 0 )
+                                <tr>
+                                    <td colspan="3">No content.</td>
+                                </tr>
+                            @endif
+                            @foreach ( $users as $user )
+                                <tr>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->created_at }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
