@@ -15,7 +15,7 @@ class AuthenticationTest extends TestCase
     use RefreshDatabase;
 
     public function test_profile_routes_are_protected_from_public(): void
-    {
+    {   
         $response = $this->get('/profile');
         $response->assertStatus(302);
         $response->assertRedirect('login');
