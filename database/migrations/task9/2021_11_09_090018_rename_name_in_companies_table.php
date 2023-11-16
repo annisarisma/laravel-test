@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class RenameNameInCompaniesTable extends Migration
@@ -15,8 +16,14 @@ class RenameNameInCompaniesTable extends Migration
     {
         // TASK: write the migration to rename the column "title" into "name"
         Schema::table('companies', function (Blueprint $table) {
-            // Write code here
+            $table->string('name')->after('title');
         });
+        DB::statement('UPDATE companies SET name = title');
+
+        Schema::table('companies', function (Blueprint $table) {
+            $table->dropColumn('title');
+        });
+
     }
 
     /**
@@ -27,7 +34,7 @@ class RenameNameInCompaniesTable extends Migration
     public function down()
     {
         Schema::table('companies', function (Blueprint $table) {
-            //
+            // 
         });
     }
 }
