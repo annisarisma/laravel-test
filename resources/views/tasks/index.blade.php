@@ -1,5 +1,6 @@
 <ul>
     @foreach ($tasks as $task)
-        <li>{{ $task->name }} ({{ $task->user->name }})</li>
+        {{ $task->name }} ({{ optional($task->user)->name }})
     @endforeach
 </ul>
+{{ $tasks->links() }}

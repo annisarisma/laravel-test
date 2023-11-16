@@ -42,15 +42,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function roles()
+    {
+        // TASK: fix this by adding a parameter
+        return $this->belongsToMany(Role::class, 'users_roles');
+    }
+
     public function tasks()
     {
         // TASK: fix this by adding a parameter
-        return $this->hasMany(Task::class);
-    }
-
-    public function comments()
-    {
-        // TASK: add the code here for two-level relationship
+        return $this->hasMany(Task::class, 'users_id', 'id');
     }
 
     public function projects()

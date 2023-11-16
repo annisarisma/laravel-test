@@ -11,8 +11,13 @@ class Comment extends Model
 
     protected $fillable = ['task_id', 'name', 'comment'];
 
-    public function task()
+    public function tasks()
     {
-        return $this->belongsTo(Task::class);
+        return $this->belongsTo(Task::class, 'task_id', 'id');
+    }
+
+    public function attachments()
+    {
+        return $this->morphMany(Attachment::class, 'attachable');
     }
 }
