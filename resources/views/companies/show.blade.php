@@ -2,4 +2,4 @@ Company: {{ $company->name }}
 
 <br />
 
-<img src="{{ $photo }}" />
+<img src="{{ $photo }}" alt="Company Photo" />

@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::post('projects', [\App\Http\Controllers\ProjectController::class, 'store']);
 
+Route::get('aa', [\App\Http\Controllers\CompanyController::class, 'show']);
 Route::get('houses/download/{house}', [\App\Http\Controllers\HouseController::class, 'download']);
 Route::resource('houses', \App\Http\Controllers\HouseController::class);
 
